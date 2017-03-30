@@ -9,6 +9,8 @@ var rename        = require('gulp-rename');
 var templateCache = require('gulp-angular-templatecache');
 var uglify        = require('gulp-uglify');
 var merge         = require('merge-stream');
+var sourcemaps    = require('gulp-sourcemaps');
+var buffer        = require('vinyl-buffer');
 
 // Where our files are located
 var jsFiles   = "src/js/**/*.js";
@@ -28,14 +30,22 @@ var interceptErrors = function(error) {
 };
 
 
+//http://sethlakowske.com/articles/gulp-browserify-source-maps/
+//https://gist.github.com/michalochman/d64360541a484e16817c
 gulp.task('browserify', ['views'], function() {
-  return browserify('./src/js/app.js')
-      .transform(babelify, {presets: ["es2015"]})
+  return browserify('./src/js/app.js', { debug: true})
+      .transform(babelify, {presets: ["es2015"], sourceMaps:true})
       .transform(ngAnnotate)
       .bundle()
       .on('error', interceptErrors)
       //Pass desired output filename to vinyl-source-stream
       .pipe(source('main.js'))
+
+      //Next three lines added for sourceMaps      
+      .pipe(buffer())
+      .pipe(sourcemaps.init({loadMaps: true}))
+      .pipe(sourcemaps.write('./'))
+
       // Start piping stream to tasks!
       .pipe(gulp.dest('./build/'));
 });

@@ -4,6 +4,14 @@
 
 View the **[demo application](https://angularjs.realworld.io)** or **[learn how to build the application from scratch](https://thinkster.io/angularjs-es6-tutorial)**!
 
+# Before Starting...
+
+This fork exists to have the following changes:
+
+ * Added Chrome debugging for Visual Studio Code. This requires seperately installing the "Debugger for Chrome" extension.
+ * Added sourceMap generation, to support aforementioned debugging.
+ * Added Yarn.  It's just a lock file...
+
 # Getting started
 
 1. Clone repo
