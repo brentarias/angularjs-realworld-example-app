@@ -8,7 +8,7 @@ View the **[demo application](https://angularjs.realworld.io)** or **[learn how 
 
 This fork exists to have the following changes:
 
- * Added Chrome debugging for Visual Studio Code. This requires seperately installing the "Debugger for Chrome" extension.
+ * Added [Chrome debugging for Visual Studio Code](https://code.visualstudio.com/blogs/2016/02/23/introducing-chrome-debugger-for-vs-code). This requires seperately installing the "Debugger for Chrome" extension.
  * Added sourceMap generation, to support aforementioned debugging.
  * Added Yarn.  It's just a lock file...
 
